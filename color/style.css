@@ -1,0 +1,68 @@
+:root{ --bg:#0b0c0f; --card:#111317; --muted:#9aa1ac; --text:#e8ecf1; --accent:#3b82f6; --line:#1b1f28; }
+    *{ box-sizing:border-box }
+    body{ margin:0; font-family:system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Arial, "Noto Sans", sans-serif; color:var(--text); background:linear-gradient(120deg,#0b0c0f,#0f1218); }
+
+    header{ padding:12px 20px; border-bottom:1px solid var(--line); position:sticky; top:0; background:#0b0c0fd9; backdrop-filter:saturate(140%) blur(6px); display:flex; gap:12px; align-items:center; z-index:10 }
+    header h1{ margin:0; font-size:16px; font-weight:600; letter-spacing:.2px; white-space:nowrap }
+
+    .app{ display:grid; grid-template-columns: 520px minmax(420px, 560px); gap:20px; padding:20px; max-width:1200px; margin:0 auto; align-items:start }
+
+    /* IZQUIERDA COMPACTA */
+    .left{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px; position:relative }
+    .pickers{ display:grid; grid-template-columns: 44px 1fr; gap:16px; align-items:center }
+    .vbar-wrap{ display:flex; justify-content:center }
+    #vbar{ width:28px; height:300px; border-radius:10px; border:1px solid var(--line); cursor:ns-resize; display:block }
+    #wheel{ width:320px; height:320px; display:block; margin:0 auto; border-radius:12px; border:1px solid var(--line); cursor:crosshair }
+
+    .readout{ display:flex; gap:16px; align-items:center; margin:12px 2px 6px 2px; color:var(--muted) }
+    .dot{ width:10px; height:10px; border-radius:50%; background:#e53935; box-shadow:0 0 0 2px #2a2f3b inset }
+    .tag{ display:inline-flex; gap:8px; align-items:center }
+    .chip{ background:#141a25; border:1px solid var(--line); padding:8px 10px; border-radius:10px; color:#dbe6f7; font-size:14px; min-width:140px }
+
+    .img-preview{ width:100%; height:260px; border:1px solid var(--line); border-radius:12px; object-fit:cover; display:block; margin-top:10px }
+
+    /* DERECHA */
+    .card{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px }
+    .filters{ position:relative; display:flex; gap:8px; align-items:center; margin-bottom:10px }
+    .select, .input{ appearance:none; border:1px solid #223047; background:#131824; color:#dbe6f7; border-radius:10px; padding:8px 12px; font-size:14px }
+    .input{ width:340px }
+    .suggestions{ position:absolute; top:44px; right:0; width:340px; max-height:320px; overflow:auto; background:var(--card); border:1px solid var(--line); border-radius:10px; padding:6px; display:none; z-index:15 }
+    .sug-item{ display:grid; grid-template-columns: 20px 1fr auto; gap:10px; align-items:center; padding:8px; border-radius:8px; cursor:pointer }
+    .sug-item:hover{ background:#0f1218 }
+    .sug-dot{ width:20px; height:20px; border-radius:6px; border:1px solid var(--line) }
+    .sug-meta{ color:var(--muted); font-size:12px }
+    .sug-empty{ color:var(--muted); font-size:13px; padding:8px; text-align:center }
+
+    .main-swatch{ width:100%; height:120px; border:1px solid var(--line); border-radius:12px; margin-bottom:10px }
+    .meta{ display:grid; grid-template-columns: 1fr 1fr; gap:8px; color:var(--muted); font-size:14px }
+    .meta strong{ color:var(--text); font-weight:600 }
+    .actions{ display:flex; gap:8px; margin-top:8px; flex-wrap:wrap }
+    .btn{ appearance:none; border:1px solid #223047; background:#131824; color:#dbe6f7; padding:8px 12px; border-radius:10px; font-size:14px; cursor:pointer }
+    .btn:hover{ border-color:#2b3a55 }
+    .btn-cta{ background:#18a34a; border-color:#169344; color:white; font-weight:700 }
+    .btn-cta:hover{ filter:brightness(1.05) }
+
+    .subs{ display:grid; gap:10px; margin-top:16px }
+    .sub{ display:grid; grid-template-columns: 56px 1fr auto; gap:12px; align-items:center; border:1px solid var(--line); border-radius:12px; background:#0f1218; padding:10px }
+    .sub .sw{ width:56px; height:46px; border:1px solid var(--line); border-radius:10px }
+    .sub h3{ margin:0; font-size:15px }
+    .sub small{ color:var(--muted) }
+    .btn-mini{ padding:6px 10px; font-size:13px }
+
+    /* Lightbox producto */
+    .lightbox{ position:fixed; inset:0; background:rgba(0,0,0,.82); display:none; align-items:center; justify-content:center; z-index:9999; opacity:0; transition:opacity .18s ease }
+    .lightbox.show{ display:flex; opacity:1 }
+    .lightbox img{ max-width:min(92vw,1200px); max-height:90vh; display:block; transform:scale(.98); transition:transform .18s ease }
+    .lightbox.show img{ transform:scale(1) }
+    .close{ position:absolute; top:12px; right:12px; padding:8px 10px; border:0; border-radius:8px; background:#fff; cursor:pointer; z-index:2 }
+
+    /* Modal eyedropper */
+    .modal{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:9998; background:rgba(0,0,0,.82); opacity:0; transition:opacity .18s ease }
+    .modal.show{ display:flex; opacity:1 }
+    .modal-card{ background:#0f1218; border:1px solid var(--line); border-radius:12px; padding:12px; width:min(92vw, 980px) }
+    .modal-head{ display:flex; justify-content:space-between; align-items:center; margin-bottom:8px }
+    .modal-head h3{ margin:0; font-size:16px }
+    #eyeCanvas{ width:100%; height:520px; border:1px solid var(--line); border-radius:10px; display:block; cursor:crosshair }
+    .pill{ background:#141a25; border:1px solid var(--line); padding:6px 10px; border-radius:8px; font-size:13px; color:#dbe6f7 }
+
+    input[type="file"]{ display:none }
