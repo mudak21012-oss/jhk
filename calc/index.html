@@ -634,7 +634,8 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-document.addEventListener('DOMContentLoaded', () => {
+
+    document.addEventListener('DOMContentLoaded', () => {
       let totalFinal = 0;
       let isCalculating = false;
 
@@ -806,7 +807,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             containerEl.addEventListener('click', e => {
               if (e.target !== toggleEl) {
-                toggleEl.checked = !toggleEl.checked;
+                // Prevenir cambio si ya está en ese estado
+                const current = toggleEl.checked;
+                toggleEl.checked = !current;
                 toggleEl.dispatchEvent(new Event('change'));
               }
             });
@@ -1173,6 +1176,7 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('El PDF se ha generado correctamente. Para comenzar la descarga, por favor, haga clic en el botón de "Aceptar".');
       }
     });
+  
 });
 </script>
 
